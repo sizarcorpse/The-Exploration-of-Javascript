@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 🍖Text Object Overview
+
+        textContent => text
+        splitText() =>
+        appendData() =>
+        insertData() =>
+        deleteData() =>
+        replaceData() =>
+        substringData() =>
+        normalize() =>
+        data => text
+    -->
+    <p class="one">Hi, My name is sizar</p>
+
+    <!--  Whitespace Creates Text Nodes -->
+    <p id="p1"></p>
+    <p id="p2">WHITE SPACE</p>
+    <p id="p3"></p>
+
+    <!-- 🍗 Manipulating Text Nodes with
+        appendData() => 
+        insertData() =>
+        deleteData() =>
+        replaceData() =>
+        substringData() =>
+    -->
+  </body>
+  <p id="two">Go big Blue Blue</p>
+
+  <!-- 🥩When Multiple Sibling Text Nodes Occurs -->
+  <p id="three">Hi, <strong>cody</strong> welcome!</p>
+
+  <!-- 🍠 Using normalize() to Combine Sibling Text Nodes into
+One Text Nod  -->
+  <div class="normalize"></div>
+
+  <!-- 🥟 Using splitText() to Split a Text Node -->
+  <p id="four">Hey Yo!</p>
+
+  <script>
+    //   🍖Text Object Overview
+
+    let textHi = document.querySelector("p").firstChild;
+    console.log(textHi.constructor);
+    console.log(textHi);
+
+    // Porperties
+    console.log(textHi.nodeType);
+    console.log(textHi.nodeName);
+    console.log(Object.keys(textHi).sort());
+
+    //text own properties and inherited properties
+    let textPropertiesIncludeInherited = [];
+    for (let p in textHi) {
+      textPropertiesIncludeInherited.push(p);
+    }
+    console.log(textPropertiesIncludeInherited.sort());
+
+    //text inherited properties only
+    let textPropertiesOnlyInherited = [];
+    for (let p in textHi) {
+      if (!textHi.hasOwnProperty(p)) {
+        textPropertiesOnlyInherited.push(p);
+      }
+    }
+    console.log(textPropertiesOnlyInherited.sort());
+
+    //  Whitespace Creates Text Nodes
+    console.log(document.getElementById("p1").firstChild);
+    console.log(document.getElementById("p2").firstChild);
+
+    // Creating and Injecting Text Nodes
+    let textNode = document.createTextNode("Hello World");
+    let p = document.getElementById("p3");
+    p.appendChild(textNode);
+
+    // Getting a Text Node Value with .data or nodeValue
+    console.log(document.getElementById("p2").firstChild.data);
+    console.log(document.getElementById("p2").firstChild.nodeValue);
+
+    // 🍗 Manipulating Text Nodes with
+
+    let pElementText = document.querySelector("p#two").firstChild;
+    console.log(pElementText.data);
+
+    // add !
+    pElementText.appendData("!");
+    console.log(pElementText.data);
+
+    //remove first 'Blue'
+    pElementText.deleteData(7, 5);
+    console.log(pElementText.data);
+
+    // Bring back 'Blue'
+    pElementText.insertData(7, "Blue ");
+    console.log(pElementText.data);
+
+    // replace first 'Blue' with 'Bunny'
+    pElementText.replaceData(7, 5, "Bunny ");
+    console.log(pElementText.data);
+
+    //extract substring 'Blue Bunny'
+    console.log(pElementText.substringData(7, 10));
+
+    // 🥩When Multiple Sibling Text Nodes Occurs
+    let pElement = document.querySelector("p#three");
+    console.log(pElement.childNodes.length);
+    console.log(pElement.firstChild.data);
+    console.log(pElement.firstChild.nextSibling.firstChild.data);
+    console.log(pElement.lastChild.data);
+
+    // 🍠 Using normalize() to Combine Sibling Text Nodes into
+
+    let pElementNode = document.createElement("p");
+    let textNodeHi = document.createTextNode("Hi");
+    let textNodeCody = document.createTextNode("Cody");
+
+    pElementNode.appendChild(textNodeHi);
+    pElementNode.appendChild(textNodeCody);
+
+    let divElement = document.querySelector("div.normalize");
+    divElement.appendChild(pElementNode);
+    console.log(document.querySelector(".normalize p").childNodes.length); //logs 2
+    document.querySelector("div.normalize").normalize(); //combine our sibling text nodes
+    console.log(document.querySelector(".normalize p").childNodes.length); //logs 1
+
+    // 🥟 Using splitText() to Split a Text Node
+    console.log(document.querySelector("p#four").firstChild.splitText(4).data);
+
+    //What remains in the DOM...
+    console.log(document.querySelector("p#four").firstChild.textContent);
+  </script>
+</html>

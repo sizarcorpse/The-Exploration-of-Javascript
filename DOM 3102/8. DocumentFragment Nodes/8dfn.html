@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DocumentFragment Nodes</title>
+  </head>
+  <body>
+    <!-- 🥠Using createDocumentFragment() to Create
+DocumentFragments
+
+ -->
+    <ul></ul>
+    <div></div>
+  </body>
+
+  <script>
+    // 🥠 Using createDocumentFragment() to Create DocumentFragments
+    var docFrag1 = document.createDocumentFragment();
+    console.log(docFrag1);
+
+    ["blue", "green", "red", "blue", "pink"].forEach(function (color) {
+      var li = document.createElement("li");
+      li.textContent = color;
+      li.style.backgroundColor = color;
+      docFrag1.appendChild(li);
+    });
+
+    console.log(docFrag1.childNodes);
+    console.log(docFrag1);
+
+    // adding to live dom
+    document.querySelector("ul").appendChild(docFrag1);
+
+    // Using innerHTML on a Document Fragment
+
+    //create a <div> and document fragment
+    var divElm = document.createElement("div");
+    var docFrag = document.createDocumentFragment();
+    docFrag.appendChild(divElm);
+    docFrag.querySelector("div").innerHTML =
+      "<ul><li>foo</li><li>bar</li></ul>";
+    console.log(docFrag.querySelectorAll("li").length);
+
+    document
+      .querySelector("div")
+      .appendChild(docFrag.querySelector("div").firstChild);
+
+    console.log(document.querySelector("div").innerHTML);
+
+    //  Leaving Fragments Containing Nodes in Memory by Cloning;
+  </script>
+</html>

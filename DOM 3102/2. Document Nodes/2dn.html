@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="height: 2000px">
+    <!-- 🎀  document Node Overview
+-->
+    <!-- all key mapping for document node
+    ELEMENT_NODE = 1
+    ATTRIBUTE_NODE = 2
+    TEXT_NODE = 3
+    CDATA_SECTION_NODE = 4
+    ENTITY_REFERENCE_NODE = 5
+    ENTITY_NODE = 6
+    PROCESSING_INSTRUCTION_NODE = 7
+    COMMENT_NODE = 8
+    DOCUMENT_TYPE_NODE = 10
+    DOCUMENT_NODE = 9
+    DOCUMENT_FRAGMENT_NODE = 11
+    NOTATION_NODE = 12
+-->
+
+    <!-- 🎁 HTMLDocument Properties and Methods (Including
+Inherited)
+  -->
+    <!-- 🎫 Getting General HTML Document Information (title,
+url, referrer, lastModified, and compatMode)  
+
+        document.title = 'Document Title';
+        document.URL = 'http://www.example.com/';
+        document.referrer = 'http://www.example.com/';
+        document.lastModified = 'Mon, 01 Jan 2000 00:00:00 GMT';
+        document.compatMode = 'BackCompat';
+
+-->
+    <!-- 🎠  document Child Node  -->
+    <!-- 🎡Getting a Reference to the Focus/Active Node in the Document
+        document.activeElement => we can quickly get a reference to the node in the document that is focused/active
+-->
+    <textarea class="textarea"></textarea>
+
+    <!-- 🎢 Using ownerDocument to Get a Reference to the
+Document from an Element 
+
+        ownerElement.ownerDocument => we can get a reference to the document from an element
+
+-->
+    <!-- -----
+
+
+
+    
+ -->
+  </body>
+
+  <script>
+    // 🎀 document Node Overview
+
+    console.log(window.document.constructor);
+    console.log(window.document.nodeType);
+
+    let dfn = document.createDocumentFragment();
+    console.log(dfn.nodeType);
+
+    // 🎁 HTMLDocument Properties and Methods (IncludingInherited)
+
+    // document own properties
+    console.log(Object.keys(document).sort());
+
+    //document own properties and inherited properties
+    let documentProperties = [];
+    for (let key in document) {
+      documentProperties.push(key);
+    }
+    console.log(documentProperties.sort());
+
+    //document inherited properties only
+    let documentInheritedProperties = [];
+    for (let key in document) {
+      if (!document.hasOwnProperty(key)) {
+        documentInheritedProperties.push(key);
+      }
+    }
+    console.log(documentInheritedProperties.sort());
+
+    // 🎫 Getting General HTML Document Information (title,url,referrer,lastModified,and compatMode)
+
+    let d = document;
+    console.log("document : ", d);
+    console.log("title : ", d.title);
+    console.log("url : ", d.URL);
+    console.log("referrer : ", d.referrer);
+    console.log("lastModified : ", d.lastModified);
+    console.log("compatMode : ", d.compatMode);
+
+    // 🎠 document Child Node
+
+    console.log("document.childNodes : ", d.childNodes[0].nodeType);
+    console.log("document.childNodes : ", d.childNodes[1].nodeType);
+
+    // 🎡Getting a Reference to the Focus/Active Node in the Document
+    document.querySelector(".textarea").focus();
+    console.log("document.activeElement : ", document.activeElement);
+
+    // Determining Whether the Document or Any Node Inside the Document Has Focus
+    setTimeout(function () {
+      console.log(document.hasFocus());
+    }, 5000);
+    // document.defaultView Is a Shortcut to the Head/ Global Object
+
+    console.log(document.defaultView);
+
+    // 🎢 Using ownerDocument to Get a Reference to the Document from an Element
+  </script>
+</html>

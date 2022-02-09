@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cp1</title>
+  </head>
+  <body>
+    <!-- Add your content here-->
+    <!-- 
+       🎈 NODE OBJECT TYPE:
+        DOCUMENT_NODE => window.document
+        ELEMENT_NODE => HTML element , like <div> , <p> , <h1> , <strong>
+        ATTRIBUTE_NODE => <div id="id"> , <p class="class">
+        TEXT_NODE => <div>text</div>
+        DOCUMENT_FRAGMENT_NODE => document.createDocumentFragment()
+        DOCUMENT_TYPE_NODE => <!DOCTYPE html>
+
+     -->
+    <!-- 
+         🎆Subnode Objects Inherit from Node Object
+      -->
+    <a href="#" class="class-name" id="id-name" style="font-size: 25px"
+      >Subnode
+      <span>Subnode Span</span>
+    </a>
+
+    <!--  🎇 Properties and Methods for Working with Nodes 
+        Node properties:
+        childNodes => array of child nodes
+        firstChild => first child node
+        lastChild => last child node
+        nextSibling => next sibling node
+        previousSibling => previous sibling node
+        parentNode => parent node
+        nodeName => node name
+        nodeType => node type
+        nodeValue => node value
+        textContent => text content
+        ownerDocument => owner document
+        attributes => array of attributes
+        className => class name
+        id => id
+        tagName => tag name
+        innerHTML => inner html
+        outerHTML => outer html
+        prefix => prefix
+        ...more
+
+        Node methods:
+        appendChild() => append child node
+        cloneNode() => clone node
+        compareDocumentPosition() => compare document position
+        contains() => contains
+        insertBefore() => insert before
+        hasChildNodes() => has child nodes
+        removeChild() => remove child
+        replaceChild() => replace child
+        hasAttributes() => has attributes
+        hasAttribute() => has attribute
+        ...more
+
+        Document methods:
+        createElement() => create element
+        createTextNode() => create text node
+        createComment() => create comment
+        createDocumentFragment() => create document fragment
+        createAttribute() => create attribute
+        createCDATASection() => create cdata section
+        createProcessingInstruction() => create processing instruction
+        createEntityReference() => create entity reference
+        createDocumentType() => create document type
+        ...more
+
+        HTML*Element properties:
+        innerHTML => inner html
+        outerHTML => outer html
+        className => class name
+        id => id
+        tagName => tag name
+        textContent => text content
+        firstElementChild => first element child
+        lastElementChild => last element child
+        nextElementChild => next element child
+        previousElementChild => previous element child
+        children => array of children
+        ...more
+    -->
+
+    <!-- 
+        🧨Identifying the Type and Name of a Node
+        Node.TEXT_NODE ==> #text ==> value 3
+        Node.ELEMENT_NODE ==> <div> ==> value 1
+        Node.ATTRIBUTE_NODE ==> <div id="id"> ==> value 2
+        Node.DOCUMENT_NODE ==> document ==> value 9
+        Node.DOCUMENT_FRAGMENT_NODE ==> document fragment ==> value 11
+        Node.DOCUMENT_TYPE_NODE ==> <!DOCTYPE html> ==> value 10
+        Node.COMMENT_NODE ==>  comment ==> value 8
+       ...more
+
+     -->
+
+    <!-- ✨ Getting a Node’s Value
+            Node.nodeValue ==> node value
+            Node.textContent ==> text content
+            Node.innerHTML ==> inner html 
+      -->
+
+    <!-- 🎉 Using JavaScript Methods to Create Element and Text Nodes
+            document.createElement() => create element
+            document.createTextNode() => create text node
+            document.createAttribute() => create attribute
+            ...more    
+       -->
+
+    <!-- 🎊 Using JavaScript Strings to Create and Add Element and Text Nodes to the DOM,
+      Extracting Parts of the DOM Tree as JavaScript Strings:
+      innerHTML => inner html : string [create a text node and update the div#D with the text node]
+      outerHTML => outer html : string [create a text node and replace the div#E with the text node ]
+      textContent => text content : string [when executing : all text is returned even if it's in child element nodes ]
+      innerText => inner text : string 
+      insertAdjacentHTML() => insert adjacent html : function
+    -->
+    <div id="A"></div>
+    <span id="B"></span>
+    <div id="C"></div>
+    <div id="D"></div>
+    <div id="E"></div>
+    <i id="elementWithHow">how</i>
+
+    <!-- 🎃Using appendChild() and insertBefore() to Add Node Objects to the DOM 
+      appendChild() => append child
+      insertBefore() => insert before
+      append() => append
+      prepend() => prepend
+      before() => before
+      ...more
+    -->
+
+    <p class="appendSingleChild">appendChild and InsertBefore :</p>
+
+    <ul class="insertBefore">
+      <li>2</li>
+      <li>3</li>
+    </ul>
+
+    <!-- 🎄Using removeChild() and replaceChild() to Remove and Replace Nodes 
+      removeChild() => remove child
+      replaceChild() => replace child
+      ...more
+  
+  -->
+    <div id="hi">Hi</div>
+    <div id="dude">Dude</div>
+
+    <div id="replace">replace</div>
+    <div id="bitch">bitch</div>
+
+    <!-- 🎋Using cloneNode() to Clone Nodes 
+      cloneNode() => clone node
+    -->
+    <ul class="cloneNode">
+      <li>Hi</li>
+      <li>there</li>
+    </ul>
+
+    <!-- 🎍Getting a List/Collection of All Immediate Child Nodes 
+      Node.childNodes => Using the childNodes property produces an array-like list 
+      
+      -->
+
+    <div id="childNodes">
+      <p>childNodes</p>
+      <p>childNodes</p>
+      <p>childNodes</p>
+    </div>
+
+    <!-- 🎎Converting a NodeList or HTMLCollection to a
+JavaScript Array -->
+
+    <!-- 🎏 Traversing Nodes in the DOM
+      Node.firstChild => first child
+      Node.lastChild => last child
+      Node.nextSibling => next sibling
+      Node.previousSibling => previous sibling
+
+      ❗ If you are familiar with the DOM, you should not be surprised that traversing the DOM
+        includes traversing not just element nodes, but also text and comment nodes (I believe
+        the preceding code example makes this clear), and this is not exactly ideal.
+      -->
+    <ul class="traversing">
+      <!-- comment -->
+      <li id="A"></li>
+      <li id="B"></li>
+      <!-- comment -->
+    </ul>
+
+    <ul class="idealTraversing">
+      <!-- comment -->
+      <li id="A">foo</li>
+      <li id="B">bar</li>
+      <!-- comment -->
+    </ul>
+
+    <!-- 🎐Verifying a Node Position in the DOM Tree with contains() and compareDocumentPosition() 
+      contains() => It’s possible to know whether a node is contained inside another node by using the contains() node method.
+      compareDocumentPosition() => compare document position
+-->
+    <!-- 🎑 1.18  Determining Whether Two Nodes Are Identical
+      isEqualNode() => is equal node
+ -->
+    <input type="text" />
+    <input type="text" />
+    <textarea>foo</textarea>
+    <textarea>foo</textarea>
+
+    <!-- 
+      
+      
+      
+      
+      
+      ❌--------------------------------------❌ 
+    
+    
+    
+    
+    
+    -->
+  </body>
+
+  <script>
+    //   🎈 NODE OBJECT TYPE:
+    console.log(Node.ELEMENT_NODE);
+    for (var key in Node) {
+      //   console.log(key, "=>", Node[key]);
+    }
+
+    // 🎆Subnode Objects Inherit from Node Object
+    let nodeAnchor = document.querySelector("a");
+    let prop = [];
+    for (var key in nodeAnchor) {
+      prop.push(key);
+    }
+    // console.log(prop.sort());
+
+    // 🎇 Properties and Methods for Working with Nodes
+    console.log(nodeAnchor.childNodes);
+    console.log(nodeAnchor.outerHTML);
+    console.log(
+      nodeAnchor.nodeName, // => a
+      nodeAnchor.nodeType === 1, // true , ELEMENT_NODE
+      nodeAnchor.nodeType === Node.TEXT_NODE, // false
+      nodeAnchor.innerHTML === Node.TEXT_NODE // false
+    );
+
+    // 🧨Identifying the Type and Name of a Node
+    console.log(document.doctype.nodeName, document.doctype.nodeType);
+    console.log(document.nodeName, document.nodeType);
+    console.log(nodeAnchor.firstChild, nodeAnchor.firstChild.nodeName);
+
+    // ✨Getting a Node’s Value
+    console.log(document.doctype.nodeValue);
+    console.log(document.nodeValue);
+    console.log(nodeAnchor.nodeValue);
+    console.log(nodeAnchor.textContent);
+    console.log(nodeAnchor.firstChild.nodeValue);
+    console.log(nodeAnchor.firstElementChild.nodeType);
+    console.log(nodeAnchor.firstElementChild.nodeValue);
+    console.log(nodeAnchor.firstElementChild);
+
+    // 🎉Using JavaScript Methods to Create Element and Text Nodes
+    let elementNode = document.createElement("div");
+    console.log(elementNode, elementNode.nodeType);
+
+    let textNode = document.createTextNode("Hi there");
+    console.log(textNode, textNode.nodeType);
+
+    // 🎊Using JavaScript Strings to Create and Add Element and Text Nodes to the DOM, Extracting Parts of the DOM Tree as JavaScript Strings
+    document.getElementById("A").innerHTML = "<strong>using string</strong>";
+    document.getElementById("B").outerHTML = `
+        <div id="B" class="new"> Using Outer HTML to Create and Add Element and Text Nodes</div>
+        `;
+    document.getElementById("C").textContent =
+      "Using textContent to Create and Add Element and Text Nodes";
+    document.getElementById("D").innerText =
+      "create a text node and update the div#D with the text node";
+    document.getElementById("E").outerText =
+      "create a text node and replace the div#E with the text node (notice div#E is gone)";
+
+    let getElementWithHow = document.getElementById("elementWithHow");
+    getElementWithHow.insertAdjacentHTML("beforebegin", "<span>Hey </span>");
+    getElementWithHow.insertAdjacentHTML("afterbegin", "<span>Dude </span>");
+    getElementWithHow.insertAdjacentHTML("beforeend", "<span> Are </span>");
+    getElementWithHow.insertAdjacentHTML("afterend", "<span>You </span>");
+    console.log(getElementWithHow.innerHTML);
+
+    console.log(document.getElementById("A").innerHTML);
+    console.log(document.getElementById("B").outerHTML);
+    console.log(document.getElementById("C").textContent);
+    console.log(document.getElementById("D").innerText);
+    console.log(document.getElementById("D").outerText);
+
+    // 🎃Using appendChild() and insertBefore() to Add Node Objects to the DOM
+
+    let createOneNode = document.createElement("strong");
+    let createOneTextNode = document.createTextNode(
+      "appendChild and InsertBefore x"
+    );
+    document.querySelector(".appendSingleChild").appendChild(createOneNode);
+    document
+      .querySelector(".appendSingleChild strong")
+      .appendChild(createOneTextNode);
+
+    let text1 = document.createTextNode("1");
+    let text4 = document.createTextNode("4");
+    let text5 = document.createTextNode("5");
+
+    let ul = document.querySelector(".insertBefore");
+    ul.insertBefore(text1, ul.firstChild);
+    ul.insertBefore(text4, ul.lastChild);
+    ul.append(text5, ul.firstChild, "hola");
+    ul.prepend(text5, ul.firstChild, "hola");
+
+    // 🎄Using removeChild() and replaceChild() to Remove and Replace Nodes
+    //remove element node
+    let hi = document.getElementById("hi");
+    console.log(hi.parentNode);
+    hi.parentNode.removeChild(hi);
+    //remove text node
+    let dude = document.getElementById("dude").firstChild;
+    console.log(dude);
+    dude.parentNode.removeChild(dude); //which should only show the remaining empty div#dude
+
+    //replace element node
+    let replace = document.getElementById("replace");
+
+    let newReplace = document.createElement("span");
+    newReplace.textContent = "Howdy";
+    console.log(newReplace);
+
+    replace.parentNode.replaceChild(newReplace, replace);
+
+    //replace text node
+    let bitch = document.getElementById("bitch").firstChild;
+    let newBitch = document.createTextNode("Hoe");
+    bitch.parentNode.replaceChild(newBitch, bitch);
+
+    // 🎉Using cloneNode() to Clone Nodes
+    let cloneNode = document.querySelector(".cloneNode");
+    cloneNode.cloneNode();
+    console.log(cloneNode.constructor); //HTMLUListElement
+    console.log(cloneNode.innerHTML);
+
+    // clone a node and all its child nodes
+    let cloneNodeWithTrue = document.querySelector(".cloneNode");
+    cloneNodeWithTrue.cloneNode(true);
+    console.log(cloneNodeWithTrue.constructor); //HTMLUListElement
+    console.log(cloneNodeWithTrue.innerHTML);
+
+    // 🎍 Getting a List/Collection of All Immediate Child Nodes;
+    let childNodes = document.querySelector("#childNodes");
+    console.log(childNodes.childNodes);
+
+    console.log(typeof childNodes);
+    console.log(typeof Array.from(childNodes.childNodes));
+
+    childNodes.childNodes.forEach((node) => {
+      console.log(node);
+    });
+
+    // 🎏 Traversing Nodes in the DOM ❗ ideal
+    let traversing = document.querySelector("ul.traversing");
+    console.log(traversing.nodeName);
+    console.log(traversing.parentNode.nodeName);
+    console.log(traversing.firstChild.nodeName);
+    console.log(traversing.lastChild.nodeName);
+    console.log(traversing.querySelector("li#A").nextSibling.nodeName);
+    console.log(traversing.querySelector("li#A").previousSibling.nodeName);
+
+    let idealTraversing = document.querySelector("ul.idealTraversing");
+    console.log(idealTraversing.nodeName);
+    console.log(idealTraversing.firstChild.nodeName); // #text :: comment or line break
+    console.log(idealTraversing.firstElementChild.nodeName); // LI element
+    console.log(idealTraversing.lastChild.nodeName); // #text
+    console.log(idealTraversing.lastElementChild.nodeName); // LI element
+    console.log(
+      idealTraversing.querySelector("li#A").nextElementSibling.nodeName
+    );
+    console.log(
+      idealTraversing.querySelector("li#B").previousElementSibling.nodeName
+    );
+    //What are the element only child nodes of the ul?
+
+    console.log(idealTraversing.children);
+    //What is the parent element of the first li?
+
+    console.log(idealTraversing.firstElementChild.parentElement);
+
+    // 🎐Verifying a Node Position in the DOM Tree with contains() and compareDocumentPosition()
+
+    let html = document.querySelector("html");
+    console.log(html.contains(document.querySelector("body"))); //true
+
+    // 🎑Getting the Document Type Declaration of a Document Object
+
+    let input = document.querySelectorAll("input");
+    console.log(input[0].isEqualNode(input[1])); //true
+    console.log(input[0] === input[1]); //true
+
+    let textarea = document.querySelectorAll("textarea");
+    console.log(textarea[0].isEqualNode(textarea[1])); //false
+  </script>
+</html>

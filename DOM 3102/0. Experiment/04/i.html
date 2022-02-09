@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./i.css" />
+  </head>
+  <body>
+    <div class="container">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
+        necessitatibus quod tenetur facilis sunt, culpa velit minus ullam odio.
+        Culpa cum, voluptates voluptate quasi dicta necessitatibus odio? Facere,
+        eius eum? Qui at dolorem nostrum fugiat aperiam, similique rem quae
+        maxime adipisci numquam laborum. Veniam ducimus tempore harum quasi
+        architecto ipsam ullam dolorem voluptates illum delectus pariatur totam
+        rem, quidem et ratione eligendi saepe aspernatur! Nobis impedit nulla
+        aperiam deserunt repudiandae, eius magni ipsam reiciendis autem
+        voluptatibus assumenda totam quis eligendi perferendis quos cupiditate
+        fuga odit veniam neque. Fugiat aliquam molestiae repudiandae quidem
+        voluptate natus mollitia obcaecati, dolores porro odit architecto
+        aperiam qui nobis, nesciunt dicta, id eaque perspiciatis! Quod, quis
+        odit maiores voluptates recusandae sequi voluptas doloribus quisquam
+        tempore, in fugit est debitis quibusdam aliquam excepturi eveniet
+        provident, minima possimus corrupti. Dolorum unde corrupti architecto
+        quam cupiditate suscipit? Ad dolorum corrupti debitis vel consequatur
+        laboriosam neque maxime, totam quasi voluptate dolores repellendus sequi
+        voluptatem provident quia ipsum dolor dolore. Saepe culpa rerum
+        molestias, odio ab debitis hic adipisci sed eum incidunt, id soluta,
+        natus ipsa praesentium deserunt nemo doloribus dolore recusandae
+        quibusdam. Sapiente saepe quas facilis similique officia temporibus
+        optio. Earum laudantium, laboriosam fugit eveniet iste quis? Odit sed
+        cum suscipit sunt ipsum saepe cupiditate sit illo atque tempora enim, ex
+        qui, eum voluptatibus. Vitae cumque, impedit dolor fugiat ex ipsum culpa
+        praesentium hic pariatur soluta laudantium minus facere dolore quod
+        ratione debitis amet error sint perspiciatis maiores nemo. Quos
+        molestias quisquam eos voluptatem facilis nulla, aut velit sapiente hic
+        libero ipsum suscipit! Deserunt vel delectus, nesciunt cumque ut velit
+        ipsum consequatur impedit voluptatem nam quae repellat culpa, hic
+        reprehenderit numquam obcaecati repudiandae itaque temporibus ducimus
+        excepturi. Accusamus ipsa eius optio. Amet id velit debitis ut
+        accusantium porro aut earum modi dolorem enim nemo inventore saepe sequi
+        corporis fugiat, minima possimus cum blanditiis, sunt at. Iste ea
+        veritatis impedit eligendi cumque aspernatur voluptatibus nobis eos
+        sapiente porro praesentium perspiciatis, tenetur quas saepe nisi
+        molestias? Atque unde placeat ex sequi aut excepturi mollitia veniam,
+      </p>
+
+      <button>see more</button>
+    </div>
+
+    <script>
+      let container = document.querySelector(".container");
+
+      let button = document.querySelector("button");
+
+      function getElementHeight(el) {
+        var clone = el.cloneNode(true);
+        var width = el.getBoundingClientRect().width;
+        clone.style.cssText =
+          "position: fixed; top: 0; left: 0; overflow: auto; visibility: hidden; pointer-events: none; height: unset; max-height: unset; width: " +
+          width +
+          "px";
+        document.body.append(clone);
+        var height = clone.getBoundingClientRect().height + "px";
+        clone.remove();
+        return height;
+      }
+
+      button.addEventListener("click", () => {
+        let content = document.querySelector(".container p");
+
+        content.style.cssText += `
+        display: block;
+        height: ${getElementHeight(content)};
+        `;
+      });
+    </script>
+  </body>
+</html>

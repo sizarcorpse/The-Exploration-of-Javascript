@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      id="linkElement"
+      href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css"
+      rel="stylesheet"
+      type="text/css"
+      crossorigin="anonymous"
+    />
+
+    <title>CSS Stylesheets and CSS Rules</title>
+
+    <style id="styleElement">
+      body {
+        background-color: #fff;
+      }
+      p {
+        line-height: 1.4em;
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 🍕 CSSStyleSheet Properties and Methods
+        disabled
+        href
+        media
+        ownerNode
+        parentStylesheet
+        title
+        type
+        cssRules
+        ownerRule
+        deleteRule
+        insertRule
+-->
+
+    <!--🍔 CSSStyleRule Overview -->
+
+    <!-- 🍟  CSSStyleRule Properties and Methods 
+        selectorText
+        style
+        cssText
+        parentRule
+        deleteRule
+        insertRule
+
+    
+    -->
+
+    <!-- 🌭 Using insertRule() and deleteRule() to Insert and
+Delete CSS Rules in a Stylesheet 
+-->
+    <p>Hi</p>
+  </body>
+
+  <script>
+    // //logs function HTMLLinkElement() { [native code] }
+    // console.log(document.querySelector("#linkElement").constructor);
+    // //logs function HTMLStyleElement() { [native code] }
+    // console.log(document.querySelector("#styleElement").constructor);
+
+    /* logs function CSSStyleSheet() { [native code] } because this object is the
+            stylesheet itself */
+    console.log(document.querySelector("#styleElement").sheet.constructor);
+    /* logs function CSSStyleRule() { [native code] } because this object is the rule
+            inside of the stylesheet */
+    console.log(
+      document.querySelector("#styleElement").sheet.cssRules[0].constructor
+    );
+
+    // accessing all the stylesheets
+    console.log(document.styleSheets.length);
+    console.log(document.styleSheets[0]);
+    console.log(document.styleSheets[1]);
+
+    //get CSSStylesheet object for <link>
+    console.log(document.querySelector("#linkElement").sheet);
+    //same as document.styleSheets[0]
+    //get CSSStylesheet object for <style>
+    console.log(document.querySelector("#styleElement").sheet);
+    //same as document.styleSheets[1]
+
+    // CSSStyleSheet Properties and Methods
+
+    var styleSheet = document.querySelector("#styleElement").sheet;
+
+    //text own properties
+    console.log(Object.keys(styleSheet).sort());
+
+    //text own properties and inherited properties
+    var styleSheetPropertiesIncludeInherited = [];
+    for (var p in styleSheet) {
+      styleSheetPropertiesIncludeInherited.push(p);
+    }
+    console.log(styleSheetPropertiesIncludeInherited.sort());
+    //text inherited properties only
+    var styleSheetPropertiesOnlyInherited = [];
+    for (var p in styleSheet) {
+      if (!styleSheet.hasOwnProperty(p)) {
+        styleSheetPropertiesOnlyInherited.push(p);
+      }
+    }
+    console.log(styleSheetPropertiesOnlyInherited.sort());
+
+    // 🍔 CSSStyleRule Overview
+    var sSheet = document.querySelector("#styleElement").sheet;
+    console.log(sSheet.cssRules[0]);
+    console.log(sSheet.cssRules[0].cssText);
+    console.log(sSheet.cssRules[1]);
+
+    // 🍟 CSSStyleRule Properties and Methods
+
+    var styleSheetRule = document.querySelector("#styleElement").sheet.cssRules;
+    console.log(styleSheetRule);
+    //text own properties
+    console.log(Object.keys(styleSheetRule).sort());
+    //text own properties and inherited properties
+    var styleSheetPropertiesIncludeInherited = [];
+    for (var p in styleSheetRule) {
+      styleSheetPropertiesIncludeInherited.push(p);
+    }
+    console.log(styleSheetPropertiesIncludeInherited.sort());
+    // text inherited properties only
+    var styleSheetRulePropertiesOnlyInherited = [];
+    for (var p in styleSheetRule) {
+      if (!styleSheetRule.hasOwnProperty(p)) {
+        styleSheetRulePropertiesOnlyInherited.push(p);
+      }
+    }
+    console.log(styleSheetRulePropertiesOnlyInherited.sort());
+
+    // 🌭 Using insertRule() and deleteRule() to Insert and Delete CSS Rules in a Stylesheet
+
+    //add a new CSS rule at index 1 in the inline stylesheet
+    document
+      .querySelector("#styleElement")
+      .sheet.insertRule("p{background:red}", 1);
+
+    //verify it was added
+    console.log(
+      document.querySelector("#styleElement").sheet.cssRules[1].cssText
+    );
+    //Delete what we just added
+    document.querySelector("#styleElement").sheet.deleteRule(1);
+
+    //Delete what we just added
+    document.querySelector("#styleElement").sheet.deleteRule(1);
+
+    //     Using the .style Property to Edit the Value of a CSSStyleRule
+
+    // Programmatically Adding External Stylesheets to an HTML Document
+    var link = document.createElement("link");
+    link.setAttribute("rel", "stylesheet");
+    link.setAttribute("type", "text/css");
+    link.setAttribute("id", "externalStyleSheet");
+    link.setAttribute(
+      "href",
+      "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    );
+    document.head.appendChild(link);
+    console.log(document.querySelector("#externalStyleSheet"));
+
+    // Using the .disabled Property to Disable/Enable Stylesheets
+
+    //Get current boolean disabled value
+    console.log(document.querySelector("#linkElement").disabled); //log 'false'
+    console.log(document.querySelector("#styleElement").disabled); //log 'false'
+
+    //Set disabled value, which of course disables all styles for this document
+    document.querySelector("#linkElement").disabled = true;
+    document.querySelector("#styleElement").disabled = true;
+  </script>
+</html>

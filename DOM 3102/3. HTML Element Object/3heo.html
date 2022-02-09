@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 🎪HTML*Element Object Overview
+       generate name of all HTML Element constructors
+
+        HTMLHtmlElement 
+        HTMLParagraphElement
+        HTMLHeadElement 
+        HTMLHeadingElement
+        HTMLLinkElement 
+        HTMLQuoteElement
+        HTMLTitleElement 
+        HTMLPreElement
+        HTMLMetaElement 
+        HTMLBRElement
+        HTMLBaseElement 
+        HTMLBaseFontElement
+        HTMLIsIndexElement 
+        HTMLFontElement
+        HTMLStyleElement 
+        HTMLHRElement
+        HTMLBodyElement 
+        HTMLModElement
+        HTMLFormElement 
+        HTMLAnchorElement
+        HTMLSelectElement 
+        HTMLImageElement
+        HTMLOptGroupElement 
+        HTMLObjectElement
+        HTMLOptionElement 
+        HTMLParamElement
+        HTMLInputElement 
+        HTMLAppletElement
+        HTMLTextAreaElement 
+        HTMLMapElement
+        HTMLButtonElement 
+        HTMLAreaElement
+        HTMLLabelElement 
+        HTMLScriptElement
+        HTMLFieldSetElement 
+        HTMLTableElement
+        HTMLLegendElement 
+        HTMLTableCaptionElement
+        HTMLUListElement 
+        HTMLTableColElement
+        HTMLOListElement 
+        HTMLTableSectionElement
+        HTMLDListElement 
+        HTMLTableRowElement
+        HTMLDirectoryElement 
+        HTMLTableCellElement
+        HTMLMenuElement 
+        HTMLFrameSetElement
+        HTMLLIElement 
+        HTMLFrameElement
+        HTMLDivElement 
+        HTMLIFrameElement
+            
+    -->
+    <!-- 🎭HTML*Element Object Properties and Methods(Including Inherited)
+        • createElement()
+        • tagName
+        • children
+        • getAttribute()
+        • setAttribute()
+        • hasAttribute()
+        • removeAttribute()
+        • classList()
+        • dataset
+        • attributes
+        • style
+        ...more
+ -->
+    <a href="#" class="anchor">Hi </a>
+
+    <!-- 🎨 Getting a List/Collection of Element Attributes and Values
+        
+        
+-->
+    <a
+      href="#"
+      title="title"
+      data-foo="dataFoo"
+      style="margin: 0"
+      class="yes"
+      foo="boo"
+      hidden="hidden"
+      >#link</a
+    >
+
+    <!-- 🧵  Getting, Setting, and Removing an Element’s Attribute Value
+        removeAttribute() => remove an attribute from an element
+        getAttribute() => get an attribute from an element
+        setAttribute() => set an attribute on an element
+        hasAttribute() => check if an element has an attribute
+        
+        
+        
+-->
+    <!-- 🧶 Getting a List of Class Attribute Values 
+        classList() => get a list of class attribute values
+        classList.add() => add a class to an element
+        classList.remove() => remove a class from an element
+        classList.toggle() => toggle a class on an element
+        classList.contains() => check if an element has a class
+    
+    
+    -->
+    <div class="big brown bear"></div>
+
+    <!-- 🛒 Getting and Setting data-* Attributes -->
+    <div
+      data-foo-foo="foo"
+      data-bar-bar="bar"
+      class="data"
+      data-uff="uff"
+    ></div>
+  </body>
+
+  <script>
+    // 🎪HTML*Element Object Overview
+    console.log(document.querySelector("a").constructor);
+
+    // 🎭HTML*Element Object Properties and Methods(Including Inherited)
+
+    let anchor = document.querySelector("a.anchor");
+    console.log(anchor);
+    //  anchor own properties
+    console.log("own properties of anchor", Object.keys(anchor));
+
+    //element own properties and inherited properties
+    let documentPropertiesIncludeInherited = [];
+    for (let p in document) {
+      documentPropertiesIncludeInherited.push(p);
+    }
+    console.log(
+      "document properties include inherited",
+      documentPropertiesIncludeInherited
+    );
+
+    //element inherited properties
+    let documentPropertiesInherited = [];
+    for (let p in document) {
+      if (!document.hasOwnProperty(p)) {
+        documentPropertiesInherited.push(p);
+      }
+    }
+    console.log("document properties inherited", documentPropertiesInherited);
+
+    // Getting the Tag Name of an Element
+    console.log("tag name of anchor", anchor.tagName);
+    // nodeName
+    console.log("node name of anchor", anchor.nodeName);
+
+    // 🎨 Getting a List/Collection of Element Attributes and Values
+    let ElmAttributes = document.querySelector("a.yes").attributes;
+    console.log("attributes of anchor", ElmAttributes);
+    // all of the attributes and its values
+    for (let i = 0; i < ElmAttributes.length; i++) {
+      console.log(
+        ElmAttributes[i].name,
+        "=>",
+        ElmAttributes[i].value,
+        "||",
+        ElmAttributes[i].nodeName,
+        "=>",
+        ElmAttributes[i].nodeValue
+      );
+    }
+
+    // 🧵  Getting, Setting, and Removing an Element’s Attribute Value
+
+    // removing attribute
+    ElmAttributes.removeNamedItem("href");
+    ElmAttributes.removeNamedItem("title");
+    ElmAttributes.removeNamedItem("data-foo");
+    ElmAttributes.removeNamedItem("style");
+    ElmAttributes.removeNamedItem("foo");
+    ElmAttributes.removeNamedItem("hidden");
+
+    console.log("after removing element Attributes of anchor", ElmAttributes);
+
+    // reset attributes
+    let ElmAttributesX = document.querySelector("a.yes");
+    ElmAttributesX.setAttribute("href", "#");
+    ElmAttributesX.setAttribute("title", "title");
+    ElmAttributesX.setAttribute("data-foo", "dataFoo");
+    ElmAttributesX.setAttribute("style", "margin: 0");
+    ElmAttributesX.setAttribute("foo", "boo");
+    ElmAttributesX.setAttribute("hidden", "hidden");
+
+    console.log("Re-adding attributes of anchor", ElmAttributes);
+
+    // get attributes
+    console.log(ElmAttributesX.getAttribute("href"));
+    console.log(ElmAttributesX.getAttribute("title"));
+    console.log(ElmAttributesX.getAttribute("data-foo"));
+    console.log(ElmAttributesX.getAttribute("style"));
+    console.log(ElmAttributesX.getAttribute("foo"));
+    console.log(ElmAttributesX.getAttribute("hidden"));
+    console.log(ElmAttributesX.getAttribute("class"));
+
+    // hasAttribute()
+    console.log(ElmAttributesX.hasAttribute("href")); //true
+    console.log(ElmAttributesX.hasAttribute("title")); //true
+    console.log(ElmAttributesX.hasAttribute("data-foo")); //true
+    console.log(ElmAttributesX.hasAttribute("do-not-exist")); //false
+
+    // 🧶 Getting a List of Class Attribute Values
+    let div = document.querySelector("div");
+    console.log("class of div : ", div.classList);
+    console.log("class of div : ", div.className);
+
+    // add class and remove class
+    div.classList.add("🦊");
+    div.classList.remove("bear");
+    console.log("class of div : ", div.className);
+
+    // Toggling a Class Attribute Value
+    div.classList.toggle("🦊");
+    div.classList.toggle("🐎");
+    console.log("class of div : ", div.className);
+
+    // Determining Whether a Class Attribute Value Contains a Specific Value
+
+    console.log("class of div : ", div.classList.contains("🦊")); // false , this scenario is not true because 🦊 is not in the toggle
+    console.log("class of div : ", div.classList.contains("🐎")); // true
+
+    //🛒 Getting and Setting data-* Attributes
+    let divData = document.querySelector("div.data");
+    //get
+    console.log(divData.dataset.fooFoo); //logs 'foo'
+    console.log(divData.dataset.barBar); //logs 'bar'
+    console.log(divData.dataset.uff); //logs 'bar'
+    //set
+    divData.dataset.fooFoo = "Goo";
+    divData.dataset.barBar = "Bar00";
+    divData.dataset.uff = "UffAha";
+    console.log(divData);
+  </script>
+</html>

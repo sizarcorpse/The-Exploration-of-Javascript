@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 👓Selecting a Specific Element Node 
+
+    querySelector()
+    getElementById()
+    querySelectorAll()
+    getElementsByTagName()
+    getElementsByClassName()
+
+    Preconfigured Selections/Lists of Element Nodes
+        document.all - All elements in the document
+        document.forms - All form elements in the document
+        document.links - All links in the document
+        document.images - All images in the document
+        document.scripts - All script elements in the document
+        document.anchors - All anchor elements in the document
+        document.applets - All applet elements in the document
+        document.embeds - All embed elements in the document
+    
+
+-->
+
+    <ul>
+      <li class="liClass">Hello</li>
+      <li class="liClass">big</li>
+      <li class="liClass">bad</li>
+      <li class="liClass">world</li>
+      <li id="last">world</li>
+    </ul>
+  </body>
+
+  <script>
+    // 👓Selecting a Specific Element Node
+    console.log(document.querySelector("li").textContent); //logs Hello
+    console.log(document.getElementById("last").textContent);
+    console.log(document.querySelectorAll("li"));
+    console.log(document.getElementsByTagName("li"));
+    console.log(document.getElementsByClassName("liClass"));
+
+    //logs a list/array of all immediate child element nodes
+    var ulElement = document.querySelector("ul").children;
+    console.log("child", ulElement);
+  </script>
+</html>

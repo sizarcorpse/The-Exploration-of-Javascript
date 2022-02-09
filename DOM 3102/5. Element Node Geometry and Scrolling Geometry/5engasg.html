@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /*  🍕 Getting an Element’s offsetTop and offsetLeft Values Relative to the offsetParent */
+    body {
+      margin: 0;
+    }
+    /* Without POSITION value. here, position: static */
+    /* #blue {
+      height: 100px;
+      width: 100px;
+      background-color: blue;
+      border: 10px solid gray;
+      padding: 25px;
+      margin: 25px;
+    }
+    #red {
+      height: 50px;
+      width: 50px;
+      background-color: red;
+      border: 10px solid gray;
+    } */
+
+    /* With POSITION value. here, position: absolute */
+
+    /* #blue {
+      height: 100px;
+      width: 100px;
+      background-color: blue;
+      border: 10px solid gray;
+      padding: 25px;
+      margin: 25px;
+      position: absolute;
+    }
+    #red {
+      height: 50px;
+      width: 50px;
+      background-color: red;
+      border: 10px solid gray;
+    } */
+
+    /* 🍔Using getBoundingClientRect() to Get an Element’s Top, Right, Bottom, and Left Border Edge Offsets Relative
+to the Viewport  */
+
+    /* body {
+      margin: 0;
+    }
+    div {
+      height: 50px;
+      width: 50px;
+      background-color: red;
+      border: 10px solid gray;
+      margin: 100px;
+    } */
+
+    /* 🍟 Using scrollHeight and scrollWidth to Get the Size of the Element Being Scrolled  */
+    /* * {
+      margin: 0;
+      padding: 0;
+    }
+    div {
+      height: 500px;
+      width: 500px;
+      overflow: auto;
+    }
+    p {
+      height: 1000px;
+      width: 1000px;
+      background-color: red;
+    } */
+    /*  🌭  Using scrollIntoView() to Scroll an Element into View  */
+    div {
+      height: 100px;
+      width: 100px;
+      overflow: auto;
+    }
+    p {
+      background-color: red;
+    }
+  </style>
+  <body>
+    <!-- 🍕 Getting an Element’s offsetTop and offsetLeft Values Relative to the offsetParent 
+      note.offsetLeft() => the left offset of the element relative to the offsetParent.
+      note.offsetTop() => the top offset of the element relative to the offsetParent.
+      note.offsetParent() => the element’s offsetParent.
+    -->
+    <!-- <div id="blue"><div id="red"></div></div> -->
+
+    <!-- 🍔Using getBoundingClientRect() to Get an Element’s Top, Right, Bottom, and Left Border Edge Offsets Relative
+to the Viewport 
+      node.height() => the height of the element.
+      node.width() => the width of the element.
+      node.top() => the top offset of the element relative to the viewport.
+      node.right() => the right offset of the element relative to the viewport.
+      node.bottom() => the bottom offset of the element relative to the viewport.
+      node.left() => the left offset of the element relative to the viewport.
+      node.offsetHeight() => the height of the element relative to the offsetParent.
+      node.offsetWidth() => the width of the element relative to the offsetParent.
+      node.clientHeight() => the height of the element relative to the viewport.Excluding Borders
+      node.clientWidth() => the width of the element relative to the viewport. Excluding Borders
+
+-->
+    <!-- <div id="top"></div> -->
+
+    <!-- 🍟 Using scrollHeight and scrollWidth to Get the Size of
+the Element Being Scrolled 
+      node.scrollHeight() => the height of the element.
+      node.scrollWidth() => the width of the element.
+-->
+    <!-- <div><p></p></div> -->
+
+    <!-- 🌭  Using scrollIntoView() to Scroll an Element into View -->
+
+    <div>
+      <content>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7</p>
+        <p>8</p>
+        <p>9</p>
+        <p>10</p>
+      </content>
+    </div>
+  </body>
+  <script>
+    // 🍕 Getting an Element’s offsetTop and offsetLeft Values Relative to the offsetParent
+    // var lightcoral = document.querySelector("#red");
+    // var lightseagreen = document.querySelector("#blue");
+    // console.log(lightcoral.offsetLeft);
+    // lightcoral.textContent = "ol " + lightcoral.offsetLeft;
+    // console.log(lightcoral.offsetTop);
+    // lightcoral.textContent += " ot " + lightcoral.offsetTop;
+    // console.log(lightcoral.offsetParent);
+
+    // 🍔Using getBoundingClientRect() to Get an Element’s Top, Right, Bottom, and Left Border Edge Offsets Relative to the Viewport
+    // var divEdges = document.querySelector("div").getBoundingClientRect();
+    // var divEdgesWo = document.querySelector("div");
+
+    // console.log(divEdges.top, divEdges.right, divEdges.bottom, divEdges.left);
+
+    // Getting an Element’s Size (Border + Padding + Content) in the Viewport
+    // height | width  contains = (border + padding + content)
+    // console.log("height: ", divEdges.height, "width: ", divEdges.width);
+    // console.log(
+    //   "height with offsetHeight: ",
+    //   divEdgesWo.offsetHeight,
+    //   "width with offsetWidth: ",
+    //   divEdgesWo.offsetWidth
+    // );
+
+    // Getting an Element’s Size (Padding + Content) in the Viewport, Excluding Borders
+    // console.log(
+    //   "height with clientHeight: ",
+    //   divEdgesWo.clientHeight,
+    //   "width with clientWidth: ",
+    //   divEdgesWo.clientWidth
+    // );
+
+    // Using elementFromPoint() to Get the Topmost Element in the Viewport at a Specific Point
+    // console.log(document.elementFromPoint(100, 100)); //logs <div id="top">
+
+    // 🍟 Using scrollHeight and scrollWidth to Get the Size of the Element Being Scrolled
+    // var div = document.querySelector("div");
+    // console.log(
+    //   "scrollHeight",
+    //   div.scrollHeight,
+    //   "scrollWidth",
+    //   div.scrollWidth
+    // );
+    // Using scrollTop and scrollLeft to Get and Set Pixels Scrolled from the Top and Left
+    /*
+    The scrollTop and scrollLeft properties are read/write properties that return the
+    pixels to the left or top that are not currently viewable in the scrollable viewport due to
+    scrolling. 
+    */
+    // div.scrollTop = 400;
+    // div.scrollLeft = 400;
+
+    // console.log("scrollTop", div.scrollTop, "scrollLeft", div.scrollLeft);
+
+    // 🌭  Using scrollIntoView() to Scroll an Element into View
+
+    document.querySelector("content").children[9].scrollIntoView(true);
+  </script>
+</html>

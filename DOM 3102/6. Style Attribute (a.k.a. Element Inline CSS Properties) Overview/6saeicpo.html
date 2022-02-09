@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      div#three {
+        background-color: red;
+        border: 1px solid black;
+        height: 100px;
+        width: 100px;
+      }
+      .foo {
+        background-color: red;
+        padding: 10px;
+      }
+      #bar {
+        border: 10px solid #000;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="one"
+      style="
+        background-color: red;
+        border: 1px solid black;
+        height: 100px;
+        width: 100px;
+      "
+    ></div>
+    <!-- 🥓 Getting, Setting, and Removing Individual Inline CSS Properties
+        node.style.propertyName => value
+        node.setProperty('propertyName', value)
+        node.style.removeProperty('propertyName')
+        node.getPropertyValue('propertyName')
+    
+    -->
+    <div id="two"></div>
+
+    <!-- 🥚 Using getComputedStyle() to Get an Element’s
+Computed Styles (i.e., Actual Styles Including Any from
+the Cascade) -->
+    <span style="background-color: green; border: 1px solid purple" id="three"
+      >?</span
+    >
+
+    <!-- 🍳 Using the class and id Attributes to Apply and Remove
+CSS Properties on an Element
+ -->
+  </body>
+  <script>
+    var oneStyles = document.querySelector("div.one").style;
+    console.log(oneStyles);
+
+    //
+    var divStyle = document.querySelector("div#two").style;
+    divStyle.backgroundColor = "blue";
+    divStyle.border = "1px solid black";
+    divStyle.height = "100px";
+    divStyle.width = "100px";
+
+    /* remove
+        divStyle.backgroundColor = '';
+        divStyle.border = '';
+        divStyle.width = '';
+        divStyle.height = '';
+        */
+
+    // 🥓 Getting, Setting, and Removing Individual Inline CSS Properties
+
+    divStyle.setProperty("background-color", "green");
+    divStyle.setProperty("border", "10px solid blue");
+    divStyle.setProperty("height", "100px");
+    divStyle.setProperty("width", "100px");
+
+    //get
+    console.log(divStyle.getPropertyValue("background-color"));
+    console.log(divStyle.getPropertyValue("border"));
+    console.log(divStyle.getPropertyValue("width"));
+    console.log(divStyle.getPropertyValue("height"));
+
+    /* remove
+        divStyle.removeProperty('background-color');
+        divStyle.removeProperty('border');
+        divStyle.removeProperty('width');
+        divStyle.removeProperty('height');
+    */
+    //  Getting, Setting, and Removing All Inline CSS Properties
+    divStyle.cssText = `background-color:orange;border:1px solid black;height:100px;
+     width:100px;`;
+
+    ///get using cssText
+    console.log(divStyle.cssText);
+    //remove
+    // divStyle.cssText = "";
+
+    // 🥚 Using getComputedStyle() to Get an Element’s Computed Styles (i.e., Actual Styles Including Any from the Cascade)
+    var threeStyles = document.querySelector("div#three");
+    console.log(window.getComputedStyle(threeStyles).backgroundColor);
+    console.log(window.getComputedStyle(threeStyles).border);
+    console.log(window.getComputedStyle(threeStyles).height);
+    console.log(window.getComputedStyle(threeStyles).width);
+
+    // 🍳 Using the class and id Attributes to Apply and Remove CSS Properties on an Element
+    var div = document.querySelector("span");
+    div.classList.add("foo");
+    div.id = "bar";
+  </script>
+</html>
