@@ -1,0 +1,15 @@
+{
+  "name": "map-vs-object",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mapvsobj.js",
+  "scripts": {
+    "dev": "nodemon mapvsobj.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
